@@ -14,9 +14,9 @@ object ZooDb {
   implicit val executionContext: ExecutionContext = system.dispatcher
 
   val db: ZooPostgresProfile.backend.DatabaseDef = Database.forURL(
-    scala.util.Properties.envOrElse("ZOODB_JDBC", "${dbInfo.jdbc}"),
-    scala.util.Properties.envOrElse("ZOODB_USER", "${dbInfo.user}"),
-    scala.util.Properties.envOrElse("ZOODB_PASS", "${dbInfo.pass}"),
+    scala.util.Properties.envOrElse("ZOODB_JDBC", "%jdbc%"),
+    scala.util.Properties.envOrElse("ZOODB_USER", "%user%"),
+    scala.util.Properties.envOrElse("ZOODB_PASS", "%pass%"),
     null,
     "org.postgresql.Driver")
 
