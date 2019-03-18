@@ -19,19 +19,19 @@ trait JsonSupport extends SprayJsonSupport with DefaultJsonProtocol with NullOpt
       throw new UnsupportedOperationException("Missing implementation for the UUID JsonReader")
   }
 
-  implicit object formatSearchResults extends RootJsonFormat[SearchResult] {
-    override def write(o: SearchResult): JsValue = {
-      JsObject("pages" -> o.pages.toJson, "data" -> o.data.toJson)
-    }
-   override def read(json: JsValue): SearchResult =
-      throw new UnsupportedOperationException("Missing implementation for the SearchResults JsonReader")
-  }
-
   implicit object formatZooObject extends RootJsonFormat[ZooObject] {
     override def write(o: ZooObject): JsValue = o match {
       //casesToJson
     }
     override def read(json: JsValue): ZooObject =
       throw new UnsupportedOperationException("Missing implementation for the ZooObject JsonReader")
+  }
+
+  implicit object formatSearchResults extends RootJsonFormat[SearchResult] {
+    override def write(o: SearchResult): JsValue = {
+      JsObject("pages" -> o.pages.toJson, "data" -> o.data.toJson)
+    }
+   override def read(json: JsValue): SearchResult =
+      throw new UnsupportedOperationException("Missing implementation for the SearchResults JsonReader")
   }
 }
