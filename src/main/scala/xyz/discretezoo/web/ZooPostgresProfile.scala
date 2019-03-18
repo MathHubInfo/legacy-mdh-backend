@@ -6,8 +6,9 @@ trait ZooPostgresProfile extends ExPostgresProfile with PgArraySupport {
 
   override val api: API = new API {}
 
-  trait API extends super.API with ArrayImplicits {
-    //    https://github.com/tminglei/slick-pg/blob/master/src/test/scala/com/github/tminglei/slickpg/PgArraySupportSuite.scala
+  trait API extends super.API
+    with ArrayImplicits
+    with SimpleArrayPlainImplicits {
 
     implicit val intintWitness: ElemWitness[List[Int]] = ElemWitness.AnyWitness.asInstanceOf[ElemWitness[List[Int]]]
 
