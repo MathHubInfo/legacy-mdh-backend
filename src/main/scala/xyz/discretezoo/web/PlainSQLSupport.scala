@@ -1,6 +1,6 @@
 package xyz.discretezoo.web
 
-import slick.ast.Ordering.{Asc, Desc, Direction}
+import slick.ast.Ordering.{Desc, Direction}
 import slick.jdbc.GetResult
 import xyz.discretezoo.web.ZooPostgresProfile.api._
 

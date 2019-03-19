@@ -1,7 +1,10 @@
 package xyz.discretezoo.web.db
+
 import akka.actor.ActorSystem
 import akka.stream.ActorMaterializer
+
 import scala.concurrent.{ExecutionContext, Future}
+import slick.lifted.TableQuery
 import xyz.discretezoo.web.ZooJsonAPI.{Count, ResultsParameters, SearchParameters}
 import xyz.discretezoo.web.{ResultParam, SearchParam, ZooObject, ZooPostgresProfile}
 import xyz.discretezoo.web.ZooPostgresProfile.api._
