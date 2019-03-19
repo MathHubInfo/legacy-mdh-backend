@@ -36,9 +36,7 @@ trait PlainSQLSupport[T <: ZooObject] {
   private def plainGetWhere(sp: SearchParam): String = {
     val collections = sp.collections.map(inCollection.get)
       .collect({ case Some(v) => s"""("$v" IS NOT NULL)""" }).mkString(" OR ")
-    val t = (sp.filter.map(plainFilter) :+ s"($collections)").mkString(" AND ")
-    println(t)
-    t
+    (sp.filter.map(plainFilter) :+ s"($collections)").mkString(" AND ")
   }
 
 }
