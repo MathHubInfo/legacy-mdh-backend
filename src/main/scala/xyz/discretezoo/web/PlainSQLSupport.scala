@@ -28,15 +28,17 @@ trait PlainSQLSupport[T <: ZooObject] {
 
   private def plainFilter(condition: Condition): String = {
     condition match {
-      case c: BooleanCondition => s"""(${if (!c.b) "not " else ""}"${c.field}")"""
-      case c: NumericCondition => s"""("${c.field}" ${c.op} ${c.i})"""
+      case c: BooleanCondition => s"""(${if (!c.b) "not " else ""}"${c.field.toUpperCase}")"""
+      case c: NumericCondition => s"""("${c.field.toUpperCase}" ${c.op} ${c.i})"""
     }
   }
 
   private def plainGetWhere(sp: SearchParam): String = {
     val collections = sp.collections.map(inCollection.get)
       .collect({ case Some(v) => s"""("$v" IS NOT NULL)""" }).mkString(" OR ")
-    (sp.filter.map(plainFilter) :+ s"($collections)").mkString(" AND ")
+    val t = (sp.filter.map(plainFilter) :+ s"($collections)").mkString(" AND ")
+    println(t)
+    t
   }
 
 }
