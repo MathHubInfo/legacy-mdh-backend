@@ -8,7 +8,7 @@ object %plainQueryObject% extends PlainSQLSupport[%caseClass%] {
 
   override val tableName: String = "%dbTableName%"
   override implicit val getResult: GetResult[%caseClass%] = GetResult(r =>
-    $caseClass(r.nextObject.asInstanceOf[UUID], %getResultParameters%)
+    %caseClass%(r.nextObject.asInstanceOf[UUID], %getResultParameters%)
   )
 
   val inCollection: Map[String, String] = Map(
