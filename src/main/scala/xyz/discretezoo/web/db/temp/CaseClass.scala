@@ -4,11 +4,11 @@ import xyz.discretezoo.web.ZooObject
 
 case class %caseClass%(
   ID: UUID,
-  //cols
+//cols
 ) extends ZooObject {
 
   def select: Map[String, _] = Map(
-    //selectMap
+//selectMap
   )
 
 }
