@@ -6,20 +6,22 @@ import xyz.discretezoo.web.ZooPostgresProfile.api._
 
 trait PlainSQLSupport[T <: ZooObject] {
 
+  val columns: String
+  val from: String
   val inCollection: Map[String, String]
-  val tableName: String
   implicit val getResult: GetResult[T]
 
   def count(qp: SearchParam): DBIO[Int] = {
     val where = if (plainGetWhere(qp).length > 0) s" WHERE ${plainGetWhere(qp)}" else ""
-    sql"""SELECT COUNT(*) FROM "#$tableName"#$where;""".as[Int].head
+    sql"""SELECT COUNT(*) FROM "#$from"#$where;""".as[Int].head
   }
 
   def get(qp: ResultParam): DBIO[Seq[T]] = {
-    sql"""SELECT * FROM "#$tableName"
-                   WHERE #${plainGetWhere(qp.parameters)}
-                   #${plainSortBy(qp.sort)}
-                   LIMIT #${qp.limit} OFFSET #${qp.offset};""".as[T]
+    sql""" SELECT #$columns
+             FROM "#$from"
+            WHERE #${plainGetWhere(qp.parameters)}
+                  #${plainSortBy(qp.sort)}
+            LIMIT #${qp.limit} OFFSET #${qp.offset};""".as[T]
   }
 
   private def plainSortBy(sortBy: Seq[(String, Direction)]): String = {
