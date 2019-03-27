@@ -6,7 +6,11 @@ import xyz.discretezoo.web.ZooPostgresProfile.api._
 
 object %plainQueryObject% extends PlainSQLSupport[%caseClass%] {
 
-  override val tableName: String = "%dbTableName%"
+  override val columns: String =
+    """
+//columns
+    """.stripMargin
+  override val from: String = "%sqlFrom%"
   override implicit val getResult: GetResult[%caseClass%] = GetResult(r =>
     %caseClass%(r.nextObject.asInstanceOf[UUID], %getResultParameters%)
   )

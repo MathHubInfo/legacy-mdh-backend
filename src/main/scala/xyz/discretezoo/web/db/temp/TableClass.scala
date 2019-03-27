@@ -9,16 +9,16 @@ import xyz.discretezoo.web.ZooPostgresProfile.api._
 final class %tableClass%(tag: Tag) extends Table[%caseClass%](tag, "%dbTableName%") with ColumnSelector {
 
   def ID: Rep[UUID] = column[UUID]("ID", O.PrimaryKey)
-  //accessorMethods
+//accessorMethods
 
   def * : ProvenShape[%caseClass%] = (
     ID ::
-      //caseClassMapParameters ::
+//caseClassMapParameters ::
       HNil
     ).mapTo[%caseClass%]
 
   val select: Map[String, Rep[_]] = Map(
-    //selectMap
+//selectMap
   )
 
   val inCollection: Map[String, Rep[Boolean]] = Map(
