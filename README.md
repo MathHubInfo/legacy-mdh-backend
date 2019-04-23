@@ -5,11 +5,9 @@ Website backend code that
 
 ## Development
 
-To reset the status in `backend/src` or `frontend`:
+To reset the status, run the following in `src`:
 ```
 git clean -df
 git checkout .
 ```
 The first resets the files `JsonSupport.scala` and `db/ZooDb.scala`, while the second removes table-specific packages.
-
-In `frontend`, run `yarn install` after resetting the status.
