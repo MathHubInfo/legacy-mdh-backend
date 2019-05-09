@@ -19,7 +19,8 @@ object Create {
     implicit val materializer: ActorMaterializer = ActorMaterializer()
     implicit val executionContext: ExecutionContext = system.dispatcher
 
-    //tableObjects
+//tableObjects
+//views
 
     ZooDb.db.run(DBIO.seq(
       //schemaCreateList
@@ -28,7 +29,13 @@ object Create {
       case Failure(failure) => println("Failed to create tables.")
     })
 
-    //    def createCoffees: DBIO[Int] = sql"""create view "TEST_VIEW" as select * from MBGEN_MATRIXWITHCHARACTERISTICS;""
+    //def test: DBIO[Int] = sqlu"""create view "TEST_VIEW" as select * from "MBGEN_MATRIXWITHCHARACTERISTICS";"""
+    ZooDb.db.run(DBIO.seq(
+      //viewCreateList
+    )).onComplete({
+      case Success(result)  => println("Created view.")
+      case Failure(failure) => println("Failed to create view.")
+    })
 
   }
 
