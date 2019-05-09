@@ -5,8 +5,7 @@ import akka.stream.ActorMaterializer
 import slick.lifted.TableQuery
 import xyz.discretezoo.web.db.ZooDb
 
-import scala.concurrent.{Await, ExecutionContext}
-import scala.concurrent.duration.Duration
+import scala.concurrent.ExecutionContext
 import scala.util.{Failure, Success}
 import xyz.discretezoo.web.ZooPostgresProfile.api._
 //importTablePackages
