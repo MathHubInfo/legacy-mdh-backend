@@ -24,7 +24,7 @@ object Create {
     ZooDb.db.run(DBIO.seq(
       //schemaCreateList
     )).onComplete({
-      case Success(result)  => println("Created tables.")
+      case Success(result)  => println("Tables existed before or were created.")
       case Failure(failure) => println("Failed to create tables.")
     })
 
