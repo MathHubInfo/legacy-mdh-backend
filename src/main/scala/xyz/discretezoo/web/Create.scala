@@ -29,7 +29,6 @@ object Create {
       case Failure(failure) => println("Failed to create tables.")
     })
 
-    //def test: DBIO[Int] = sqlu"""create view "TEST_VIEW" as select * from "MBGEN_MATRIXWITHCHARACTERISTICS";"""
     ZooDb.db.run(DBIO.seq(
       //viewCreateList
     )).onComplete({
